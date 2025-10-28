@@ -88,7 +88,7 @@
 |R04 |Leaderboard  |Functional: The leaderboard fails at its boundary, either failing to replace the 3rd-place score with a new, higher score, or incorrectly saving 4 scores. | Low | High | | High | Design a specific boundary test: achieve scores (10, 20, 30), then achieve a 4th score (e.g., 40) and a 5th score (e.g., 5) to validate the slice(0,3) logic. |
 | R-05 | Leaderboard | Functional: Scores are sorted alphabetically (e.g., 100 < 20) instead of numerically, or in ascending order instead of descending. | Low | High | | Medium | Design a test case using scores that would fail a string-sort (e.g., 100, 5, 20) and verify the final order is 100, 20, 5. 
 |R-06 | Game Core | Non-Functional (UX): The newPuzzle() function picks words randomly with no memory, allowing the same puzzle to be shown multiple times in a row, leading to poor user experience. | High | Low | | Medium | (DEFERRED) - This is a valid UX issue, but due to its low impact on core functionality, it is deferred to prioritize the high-risk functional features. |
-|R-07 | Resposiveness | Non-Functional (UX): The game should be availabke for play across different devices. | Low | medium | | Medium | (DEFERRED) - Check whether the website behaves on different devices, i.e Tablets, mobile, or TV.|
+|R-07 | Resposiveness | Non-Functional (UX): The game should be available for play across different devices. | Low | medium | | Medium | (DEFERRED) - Check whether the website behaves on different devices, i.e Tablets, mobile, or TV.|
 
 
 ### Risk Coverage
@@ -117,9 +117,9 @@
 
 | ID | Issue Title | Severity | Risk ID | Status | GitHub Link |
 |----|-------------|----------|---------|--------|-------------|
-|D-01 |Reset button does not auto-load new puzzle |High |R-02 | | https://github.com/PLP-Database-Design/wk-5-shakl-1/issues/2|
-|D-02| Leaderboard not clearing after reset|Play → Reset → Check leaderboard |Should reset|Old scores persist|Medium| |
-|D-03|Bonus score not triggered|Solve 3 puzzles|Score doubles|Score unchanged|High| |
+|D-01 |Reset button does not auto-load new puzzle |High |R-02 |does not autoload new puzzle| https://github.com/PLP-Database-Design/wk-5-shakl-1/issues/2#issue-3563327244|
+|D-02| Leaderboard not clearing after reset|Medium| |Leaderboard does not clear|https://github.com/PLP-Database-Design/wk-5-shakl-1/issues/3#issue-3563496128 |
+|D-03|Bonus score not triggered|Solve 3 puzzles|Score doubles|High|  |scores don't double after 3 puzzles|https://github.com/PLP-Database-Design/wk-5-shakl-1/issues/4#issue-3563505951 |
 
 ## Metrics
 
