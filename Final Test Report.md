@@ -130,8 +130,8 @@
 
 ### Defect Summary
 
-- Total Defects Logged: 
-- Critical High: 
+- Total Defects Logged:3 
+- Critical High:2 
 - Fix Rate: 
 
 ## Test Control & Project Management
