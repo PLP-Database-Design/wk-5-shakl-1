@@ -119,7 +119,7 @@
 |----|-------------|----------|---------|--------|-------------|
 |D-01 |Reset button does not auto-load new puzzle |High |R-02 |does not autoload new puzzle| https://github.com/PLP-Database-Design/wk-5-shakl-1/issues/2#issue-3563327244|
 |D-02| Leaderboard not clearing after reset|Medium| |Leaderboard does not clear|https://github.com/PLP-Database-Design/wk-5-shakl-1/issues/3#issue-3563496128 |
-|D-03|Bonus score not triggered|Solve 3 puzzles|Score doubles|High|  |scores don't double after 3 puzzles|https://github.com/PLP-Database-Design/wk-5-shakl-1/issues/4#issue-3563505951 |
+|D-03|Bonus score not triggered after Solving 3 puzzles|High|  |scores don't double after 3 puzzles|https://github.com/PLP-Database-Design/wk-5-shakl-1/issues/4#issue-3563505951 |
 
 ## Metrics
 
