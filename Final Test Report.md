@@ -94,21 +94,21 @@
 ### Risk Coverage
 
 - Tested Risks Percent: 
-- Untested Risks Percent: (5 Tested Risks / 6 Total Risks) = 83.3%
+- Untested Risks Percent: (5 Tested Risks / 7 Total Risks) =  71.4% 
 
 ## Test Cases
 
 | ID | Feature | Objective | Expected Result | Actual Result | Status | Risk Link |
 |----|---------|-----------|----------------|---------------|--------|-----------|
-|TC-01 |Bonus Round |	Risk-Based (R-01 High): Validate score doubling occurs after the points for the 3rd puzzle are added. |	Solve 3 puzzles (10 pts each). Score after puzzle 1: 10. After puzzle 2: 20. After puzzle 3 (Bonus): (20+10)×2=60.| | |R-01 |
-|TC-02 |Reset Game |	Risk-Based (R-02 High): Verify that clicking "Reset" leaves the game in an unplayable "limbo" state. |Click "Reset Game". Actual Result: Score is 0, Solved is 0. Scrambled word/hint area is blank. Expected Failure: The user must also click "New Puzzle" to start a game.| | |R-02|
-|TC-03 |Leaderboard |	Risk-Based (R-03 High): Verify data persistence of the leaderboard in Incognito/Private mode.| In Chrome Incognito, achieve a score of 10. Close and reopen a new Incognito window. The score (10) should not be present on the leaderboard.| | | R-03|
-|TC-04| Leaderboard |	Risk-Based (R-04 High): Validate boundary logic: only top 3 scores are kept, and a new high score replaces the lowest of the 3.| Enter scores: 10, 20, 30. Leaderboard: 30, 20, 10. Enter score 40. Leaderboard: 40, 30, 20 (10 is removed). Enter score 5. Leaderboard: 40, 30, 20 (5 is ignored).|  | 	|R-04|
-|TC-05 |	Leaderboard |Risk-Based (R-05 Medium): Verify scores are sorted numerically in descending order, not alphabetically. |Enter scores 100, 5, and 20. The leaderboard must display: 100, 20, 5. (Alphabetical would be: 100, 20, 5 or 5, 20, 100 if the logic fails to compare number strings correctly).| | |R-05|
-|TC-06 |	Game Core |	Negative Test: Submit a guess with leading/trailing whitespace. |Enter guess ' word ' (with spaces) for the word word. The guess should be correctly validated after trimming, resulting in a Correct! message and score update. | | | |
-|TC-07 |Game Core |Negative Test: Submit an incorrect guess when a puzzle is active. |Enter an incorrect word (e.g., 'table') when a puzzle is displayed. Score and solved count must remain unchanged. Message: "Incorrect, try again!" and input field is selected for re-entry. | | | |
-|TC-08|	Usability |	Usability Test: Confirm keyboard shortcut and input focus behavior for efficient play. |On page load, the input field should automatically gain focus. Hitting the Enter key while the input field is focused should trigger the checkGuess function.| | | |
-|TC-09| Responsiveness 	|Responsiveness Test: Confirm thhe website behaves as expected acrross different screen sizes. 	The UI should still display both game section and leaderboard in the expected behavior irregardless of the screen size.| | | |
+|TC-01 |Bonus Round |	Risk-Based (R-01 High): Validate score doubling occurs after the points for the 3rd puzzle are added. |	Solve 3 puzzles (10 pts each). Score after puzzle 1: 10. After puzzle 2: 20. After puzzle 3 (Bonus): (20+10)×2=60.|works well |Pass|R-01 |
+|TC-02 |Reset Game |	Risk-Based (R-02 High): Verify that clicking "Reset" leaves the game in an unplayable "limbo" state. |Click "Reset Game". Actual Result: Score is 0, Solved is 0. Scrambled word/hint area is blank. Expected Failure: The user must also click "New Puzzle" to start a game.|does not auto startnew puzzle | Fail|R-02|
+|TC-03 |Leaderboard |	Risk-Based (R-03 High): Verify data persistence of the leaderboard in Incognito/Private mode.| In Chrome Incognito, achieve a score of 10. Close and reopen a new Incognito window. The score (10) should not be present on the leaderboard.|There is data persistence |pass | R-03|
+|TC-04| Leaderboard |	Risk-Based (R-04 High): Validate boundary logic: only top 3 scores are kept, and a new high score replaces the lowest of the 3.| Enter scores: 10, 20, 30. Leaderboard: 30, 20, 10. Enter score 40. Leaderboard: 40, 30, 20 (10 is removed). Enter score 5. Leaderboard: 40, 30, 20 (5 is ignored).|Leaderboard keeps only 3  | pass	|R-04|
+|TC-05 |	Leaderboard |Risk-Based (R-05 Medium): Verify scores are sorted numerically in descending order, not alphabetically. |Enter scores 100, 5, and 20. The leaderboard must display: 100, 20, 5. (Alphabetical would be: 100, 20, 5 or 5, 20, 100 if the logic fails to compare number strings correctly).| sorted numerically|pass |R-05|
+|TC-06 |	Game Core |	Negative Test: Submit a guess with leading/trailing whitespace. |Enter guess ' word ' (with spaces) for the word word. The guess should be correctly validated after trimming, resulting in a Correct! message and score update. | The guess is correctly validated| pass| |
+|TC-07 |Game Core |Negative Test: Submit an incorrect guess when a puzzle is active. |Enter an incorrect word (e.g., 'table') when a puzzle is displayed. Score and solved count must remain unchanged. Message: "Incorrect, try again!" and input field is selected for re-entry. |Message: “Incorrect, try again!” is seen |pass | |
+|TC-08|	Usability |	Usability Test: Confirm keyboard shortcut and input focus behavior for efficient play. |On page load, the input field should automatically gain focus. Hitting the Enter key while the input field is focused should trigger the checkGuess function.|It works as it should |pass | |
+|TC-09| Responsiveness 	|Responsiveness Test: Confirm thhe website behaves as expected acrross different screen sizes. 	The UI should still display both game section and leaderboard in the expected behavior irregardless of the screen size.| It displays both game section and leaderboard|pass | |
 
 
 
@@ -117,14 +117,15 @@
 
 | ID | Issue Title | Severity | Risk ID | Status | GitHub Link |
 |----|-------------|----------|---------|--------|-------------|
-|D-01 |Reset button does not auto-load new puzzle |High |R-02 | | |
-| | | | | | |
+|D-01 |Reset button does not auto-load new puzzle |High |R-02 | | https://github.com/PLP-Database-Design/wk-5-shakl-1/issues/2|
+|D-02| Leaderboard not clearing after reset|Play → Reset → Check leaderboard |Should reset|Old scores persist|Medium| |
+|D-03|Bonus score not triggered|Solve 3 puzzles|Score doubles|Score unchanged|High| |
 
 ## Metrics
 
-- Test Case Pass Percent: 
-- Defect Density: 
-- Risk Coverage Percent: 
+- Test Case Pass Percent: 8/9 = 88.9%
+- Defect Density: 3/9 = 0.33
+- Risk Coverage Percent: 71.4%
 - Regression Success Rate: 
 
 ### Defect Summary
@@ -149,10 +150,10 @@
 
 ## Lessons Learned
 
-- Most Defect Prone Feature: 
-- Risk Analysis Impact: 
-- Team Communication Effectiveness: 
-- Improvements for Next Cycle: 
+- Most Defect Prone Feature: Reset button logic (missing call to newPuzzle() caused system freeze).
+- Risk Analysis Impact: Helped prioritize functional features first (R-01 to R-05), saving time.
+- Team Communication Effectiveness: Effective use of WhatsApp for coordination and quick approvals.
+- Improvements for Next Cycle: Introduce automated UI testing for Reset and Leaderboard
 
 ## Attachments
 
@@ -170,4 +171,4 @@
 
 **Statement:** 
 
-**Test Status:** ☐ Completed / ☐ In Progress / ☐ Deferred
+**Test Status:** ✅Completed / ☐ In Progress / ☐ Deferred
